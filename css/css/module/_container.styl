@@ -1,0 +1,17 @@
+$container-width = 900px
+
+.container {
+	max-width: $container-width;
+	margin: auto;
+	width: 95%;
+	+mq-up(md) {
+		width: 100%;
+	}
+	&--mini {
+		max-width: ($container-width - 40);
+		margin: auto;
+	}
+	&--full {
+		padding: 20px 0;
+	}
+}

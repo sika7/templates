@@ -1,0 +1,22 @@
+// スクロールバーの見た目を変更
+.swiper-wrapper {
+	&::-webkit-scrollbar {
+		all: unset;
+		width: 5px;
+		background: transparent;
+	}
+	&::-webkit-scrollbar-track {
+		all: unset;
+		border-radius: 8px;
+		background: transparent;
+		background: #fff;
+	}
+	&::-webkit-scrollbar-thumb {
+		all: unset;
+		border-radius: 8px;
+		background: transparent;
+		&:hover {
+			background: transparent;
+		}
+	}
+}

@@ -1,0 +1,174 @@
+// form
+
+.contactForm{
+	max-width: 600px;
+	margin: 4rem auto;
+}
+
+.formGroup{
+	margin-bottom: 1.5em;
+}
+
+
+// ラベル
+.controlLabel {
+	display: block;
+	font-size: 1.2rem;
+	line-height: 1em;
+	margin-bottom: 0.3em;
+}
+
+// 必須項目
+.labelDanger {
+	color: red;
+	font-size: 0.8em;
+	margin-left: 0.5em;
+}
+
+// インプットデザイン適応
+.formControl {
+	padding: 5px;
+	border: solid 1px #aaa;
+	background-color: #fff;
+	width: 100%;
+	&--small{
+		width: 30%;
+		min-width: 80px;
+	}
+	&--medium{
+		width: 50%;
+		min-width: 200px;
+	}
+	&--large{
+		width: 80%;
+		min-width: 300px;
+	}
+}
+
+// テキストエリアデザイン対応
+.formTextarea {
+	padding: 5px;
+	border: solid 1px #aaa;
+	background-color: #fff;
+	width: 100%;
+	min-height: 250px;
+}
+
+// 入力ヒントなど
+.helpBlock {
+	font-size: 0.9rem;
+	color: #888;
+	line-height: 1em;
+	margin: 0.3em 0;
+}
+
+.checkbox {
+	line-height: 1em;
+    margin: 0.8em 1.5em 0 0;
+    display: inline-block;
+	input[type="checkbox"]{
+		display: none;
+		&:checked+.checkIcon:before {
+			content: "\f14a";
+			color: #333;
+		}
+	}
+	.checkIcon{
+		display: flex;
+		align-items: center;
+		&:before {
+			content: "\f096";
+			font-family: "FontAwesome";
+			color: #ccc;
+			font-size: 22px;
+			display: block;
+			margin-right: 0.3em;
+		}
+	}
+	
+}
+
+// ファイル
+.fileWap {
+	color: #333;
+	padding: 3px 6px;
+	border: solid 1px #aaa;
+	display: block;
+	max-width: 130px;
+	text-align: center;
+	input[type="file"] {
+		display: none;
+	}
+}
+.previewWap{
+	margin: 1em;
+}
+
+.radio {
+	line-height: 1em;
+    margin: 0.8em 1.5em 0 0;
+    display: inline-block;
+	input[type="radio"]{
+		display: none;
+		&:checked+.radioIcon:before {
+			content: "\f111";
+			color: #333;
+		}
+	}
+	.radioIcon{
+		display: flex;
+		align-items: center;
+		&:before {
+			content: "\f10c";
+			font-family: "FontAwesome";
+			color: #ccc;
+			font-size: 22px;
+			display: block;
+			margin-right: 0.3em;
+		}
+	}
+}
+
+
+.selectWap{
+	position: relative;
+    min-width: 300px;
+    width: 50%;
+    border: solid 1px #aaa;
+    background-color: #fff;
+    color: #333;
+    select{
+		padding: 5px;
+		padding-right: 3em;
+		border: solid 1px #fff;
+		border-radius: 2px;
+		width: 100%;
+		text-indent: 1em;
+    }
+	&::after {
+		content: "\f107";
+		display: block;
+		font-family: FontAwesome;
+		height: 1em;
+		width: 1em;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 1em;
+		margin: auto;
+		display: flex;
+		align-items: center;
+		color: #aaa;
+	}
+}
+
+.btnSubmit{
+	padding: 0.8em 0;
+	line-height: 1em;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	max-width: 50%;
+	min-width:160px;
+	border: solid 1px #999;
+}

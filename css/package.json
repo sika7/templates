@@ -1,0 +1,21 @@
+{
+  "name": "parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "npx parcel watch 'css/**/!(_)*.styl' -d public",
+    "fractal": "npx fractal start --sync"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.8.1",
+    "ress": "^1.2.2",
+    "stylus": "^0.54.5"
+  },
+  "dependencies": {
+    "@frctl/fractal": "^1.1.7"
+  }
+}

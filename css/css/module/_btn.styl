@@ -1,0 +1,43 @@
+// ボタン
+btn(padding = 10px) {
+	padding: padding 0
+	line-height: 1em;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+}
+
+btnGhost(color = #333) {
+	color: color
+	border: solid 1px $color;
+	transition: 1s;
+	&:hover {
+		background-color: $color;
+		color: #fff;
+	}
+}
+
+btnFlat(color = #333) {
+	color: #fff;
+	background-color: color
+	border: solid 1px color
+	transition: 1s;
+	&:hover {
+		background-color: #fff;
+		color: color
+	}
+}
+
+// ボタン
+.btnGhost {
+	btn(0.5em)
+	btnGhost(#333)
+	font-size: 1.3rem;
+}
+
+.btnFlat {
+	btn(0.5em)
+	btnFlat(#333)
+	font-size: 1.3rem;
+}

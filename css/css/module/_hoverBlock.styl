@@ -1,0 +1,21 @@
+.hoverBlock{
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	font-size: 1.4rem;
+	overflow: hidden;
+	&:hover .hoverBlock__content{
+		bottom: 0;
+	}
+	&__content{
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -100%;
+		padding: 4em 1em 1em;
+		background-color: #aaa;
+		color: #444;
+		text-align: left;
+		transition: 0.8s;
+	}
+}

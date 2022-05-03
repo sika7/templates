@@ -1,0 +1,32 @@
+// テーブル
+.table {
+	border-spacing: 0;
+	border-collapse: separate;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto 30px;
+	background-color: #fff;
+	border: solid 1px #ddd;
+	line-height: 1em;
+	&__column {
+		padding: 1.2em 0.8em;
+		line-height: 1.5em;
+		width: 100%;
+		display: block;
+		&:first-child{
+			background-color: #555;
+			color: #fff;
+		}
+	}
+	mq-up(md) {
+		border:solid 1px #ddd;
+		&__column {
+			border:solid 1px #666;
+			display: table-cell;
+			width: auto;
+			&:first-child{
+				width: 30%;
+			}
+		}
+	}
+}

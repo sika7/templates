@@ -1,0 +1,25 @@
+$container-width = 900px
+
+// breadcrumbList
+.breadcrumb {
+	text-align: left;
+	max-width: $container-width;
+	margin: 1em auto;
+	padding: 0 1em;
+	&__item {
+		display: inline-block;
+		margin-right: 1em;
+		&:before {
+			content: ">";
+			font-family: FontAwesome;
+			margin-right: 1em;
+		}
+		&:first-child:before {
+			content: "";
+			display: none;
+		}
+	}
+	&__link {
+		display: inline-block;
+	}
+}
