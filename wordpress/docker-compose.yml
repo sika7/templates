@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+    db:
+        image: mysql:5.7
+        volumes:
+            - ./.wp_data/db_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: wordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+    wordpress:
+        image: wordpress:latest
+        ports:
+            - "9000:80"
+        depends_on:
+            - db
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+        volumes:
+            - ./theme:/var/www/html/wp-content/themes/theme
+            - ./.wp_data:/var/www/html/
+            # - ./.wp_data/plugins:/var/www/html/wp-content/plugins/
+            # - ./.wp_data/uploads:/var/www/html/wp-content/uploads/
+    # phpmyadmin:
+    #     depends_on:
+    #         - db
+    #     image: phpmyadmin/phpmyadmin
+    #     environment:
+    #         - PMA_ARBITRARY=1
+    #         - PMA_HOST=db
+    #         - PMA_USER=wordpress
+    #         - PMA_PASSWORD=wordpress
+    #     ports:
+    #         - 8080:80
+    #     volumes:
+    #         - ./sessions
+# volumes:
+#     db_data:

@@ -1,0 +1,6 @@
+title: テストです
+# status: prototype
+context:
+    text: ここにテキストを入力します。
+    text2: 今日の天気
+    text3: 今日の天気
