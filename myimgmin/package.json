@@ -1,0 +1,30 @@
+{
+  "name": "myimgmin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private":true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://gitlab.com:basicexe-script/imgmin.git"
+  },
+  "bin": {
+    "myimgmin": "bin/myimgmin"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "imagemin": "^7.0.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-keep-folder": "^5.3.2",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0"
+  },
+  "devDependencies": {
+  }
+}
