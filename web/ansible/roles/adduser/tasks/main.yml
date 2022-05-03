@@ -1,0 +1,22 @@
+---
+- name: Add the user 'conoha'
+  vars:
+    password: frvm-pjo9-3fg1
+  user:
+    name: conoha
+    uid: 2525
+    groups: sudo
+    password: "{{ password | password_hash('sha512') }}"
+    shell: /bin/bash
+    # state: absent
+    # remove: yes
+  tags:
+    - setup
+- name: Set up authorized_keys for the admin user
+  authorized_key:
+    user: conoha
+    key: "{{ lookup('file', '~/.ssh/conoha.pub') }}"
+    state: present
+    # state: absent #削除
+  tags:
+    - configure

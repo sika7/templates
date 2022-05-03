@@ -1,0 +1,17 @@
+---
+- hosts: webserver
+  remote_user: conoha
+  vars:
+    conoha_home: "/home/conoha/" 
+  tasks:
+    - name: create directories
+      file:
+        path: "{{ conoha_home }}{{ item.path }}"
+        state: directory
+        owner: conoha
+        group: conoha
+        # mode: 0777
+      with_items:
+        - { path: web }
+      tags:
+        - configure

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  test-server:
+    image: nginx
+    container_name: portfolio_server
+    expose:
+      - 80
+    volumes:
+      - "./html:/usr/share/nginx/html"
+    networks:
+      - default
+      - proxy-net
+networks:
+  proxy-net:
+    external: true

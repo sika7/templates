@@ -1,0 +1,26 @@
+---
+- name: setting firewall..
+  ufw:
+    state: enabled
+    policy: allow
+- name: Set logging
+  ufw:
+    logging: on
+- ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+- ufw:
+    rule: allow
+    name: OpenSSH
+# - name: Delete OpenSSH rule
+#   ufw:
+#     rule: allow
+#     name: OpenSSH
+#     delete: yes
+
+- name: Allow port range 60030-60060
+  ufw:
+    rule: allow
+    proto: udp
+    port: 60030:60060

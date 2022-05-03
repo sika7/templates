@@ -1,0 +1,36 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.ssh.username = 'root'
+  config.ssh.pty      = true
+
+  # disable rsync
+  config.vm.synced_folder "./conoha", "/vagrant", disabled: true
+
+  config.vm.provider :conoha do |conoha|
+    conoha.openstack_auth_url = 'https://identity.tyo1.conoha.io/v2.0'
+
+    conoha.username           = 'gncu48666128'
+    conoha.password           = 'hoge'
+    conoha.tenant_name        = 'gnct48666128'
+
+    conoha.flavor             = 'g-512mb'
+    conoha.image              = 'vmi-ubuntu-16.04-amd64-20gb'
+    conoha.region             = "tyo1"
+    conoha.admin_pass         = "7ecs-ppFh-312s"
+    conoha.metadata           = {
+      instance_name_tag: "web"
+    }
+    conoha.security_groups    = [
+      "default",
+      "web-group",
+      "ssh-group",
+      # "gncs-ipv4-all",
+      # "gncs-ipv6-all"
+    ]
+    conoha.keypair_name       = "RX0"
+
+  end
+  config.ssh.private_key_path = "~/.ssh/id_rsa"
+end

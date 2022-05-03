@@ -1,0 +1,3 @@
+---
+- import_playbook: _01_init.yml
+- import_playbook: _02_server.yml

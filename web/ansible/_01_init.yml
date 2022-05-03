@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  become: yes
+  remote_user: root
+  # become_user: root
+  # vars:
+    # vagrant_home: "/home/vagrant" 
+  roles:
+    - installs
+    - adduser
