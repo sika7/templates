@@ -1,0 +1,29 @@
+# --------------------------------------------------------------------
+# // どのURLにアクセスしてもメンテページを表示する
+# --------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+ 
+  # -- メンテHTML指定
+  ErrorDocument 503 /mainte.html
+  RewriteEngine on
+  RewriteCond %{REQUEST_URI} !=/mainte.html
+ 
+  # -- 画像等のリソースファイルは除外（メンテページから参照されている場合がある為）
+  RewriteCond %{REQUEST_FILENAME} !\.(css|jpe?g|gif|png|js)$
+ 
+  # -- 作業者のIP除外
+  RewriteCond %{REMOTE_ADDR} !=202.231.xx.xx
+  RewriteCond %{REMOTE_ADDR} !=202.232.xx.xx
+ 
+  # -- その他、メンテ中に先方で確認するための特定ディレクトリを除外したい場合や別途ページなど
+  RewriteCond %{REQUEST_URI} !^/show-ok/
+  # RewriteCond %{REQUEST_URI} !^/cgi-bin/
+ 
+  # -- HTTPレスポンスコード503で返す（ブラウザ上でのURL書き換えは発生しない）
+  RewriteRule ^.*$ - [R=503,L]
+</IfModule>
+# --------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+  Header set Retry-After "Sun, 14 Jun 2009 6:00:00 GMT"
+</IfModule>
