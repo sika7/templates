@@ -1,0 +1,9 @@
+mixin section
+  section.section(class="section__"+pageClass+" section")
+mixin breadcrum
+  ol.breadcrumbList
+    li.ListItem: a(href=pageUrl+"index.html") HOME
+    if dirname
+      li.ListItem: a(href=pageUrl+dirname+'/') #{breadcrumTitle}
+    if pageTitle
+      li.ListItem #{pageTitle}

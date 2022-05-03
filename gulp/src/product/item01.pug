@@ -1,0 +1,19 @@
+extends ../_product
+append variables
+	//- 変更する
+	- var pageTitle= "";
+	- var pageDescription= site.description;
+	- var pageKeyword= site.keyword;
+	- var pageClass= "index";
+	//- オプション
+	- var pageOgpTitle= "";
+	- var pageOgpImage= ogpImage;
+	- var pageLang= "ja";
+	- var pageOgpType= "website";
+	//- Not modified
+	- var breadcrumTitle= "テスト";
+	//- 変更しない
+	- var dirname= locals.dirname;
+	- var pageUrl= site.rootUrl+locals.relativePath;
+append item
+	- var productNane= "テスト";

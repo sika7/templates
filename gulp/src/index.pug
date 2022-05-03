@@ -1,0 +1,35 @@
+extends common/_layout
+append variables
+  //- 変更する
+  - var pageTitle= "";
+  - var pageDescription= site.description;
+  - var pageClass= "index";
+  - var imgFolder= "";
+  //- オプション
+  - var pageOgpTitle= "";
+  - var pageOgpImage= ogpImage;
+  - var pageLang= "ja";
+  - var pageOgpType= "website";
+  //- Not modified
+  - var breadcrumTitle= "";
+  - var breadcrumUrl= "";
+  - var relativePath= "";
+  - var pageUrl= site.rootUrl+locals.relativePath;
+//- append css
+//-   link(rel="stylesheet" href="page.css")
+block contents
+  +section('news')
+    .boxLayout
+      p テキストがここに入ります。#{locals.relativePath}
+  .comingSoon
+    p 準備中
+    a(href="index.html")
+    p 準備中
+    p 準備中
+    p 準備中
+    p 準備中
+  progress(value="50" max="100")50%
+  progress(max="100")大気中
+    
+//- append js
+//-   script(type="text/javascript" src="js/page.js")

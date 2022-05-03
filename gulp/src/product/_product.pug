@@ -1,0 +1,18 @@
+extends ../common/_layout
+//- append variables
+	//- 変更する
+	//- - var pageDescription= site.description;
+	//- - var pageKeyword= site.keyword;
+	//- オプション
+	//- - var pageOgpTitle= "";
+	//- - var pageOgpImage= ogpImage;
+	//- - var pageLang= "ja";
+	//- - var pageOgpType= "website";
+//- append css
+//- 	link(rel="stylesheet" href="page.css")
+block contents
+	+breadcrum
+	.boxLayout
+		p #{productNane}
+//- append js
+//- 	script(type="text/javascript" src="js/page.js")

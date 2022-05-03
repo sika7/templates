@@ -1,0 +1,47 @@
+meta(charset="UTF-8")
+
+meta(name="author", content="basicexe")
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
+meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0")
+
+//- ファビコン
+link(rel="icon" href=pageUrl+"favicon.ico")
+link(rel="apple-touch-icon" sizes="152x152" href=pageUrl+"/apple-touch-icon.png")
+
+//- 電話番号のリンクを無効化
+meta(name="format-detection" content="telephone=no")
+
+if pageTitle
+  title #{pageTitle} - #{siteName}
+else
+  title #{siteName}
+meta(name="description" content=pageDescription)
+
+block css
+  link(href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet" type="text/css")
+  link(href=pageUrl+"css/style.css" rel="stylesheet" type="text/css")
+
+//- OGP
+if pageOgpTitle
+  meta(property="og:title" content=pageOgpTitle + ' | ' + siteName)
+else
+  meta(property="og:title" content=siteName)
+
+meta(property="og:type" content=pageOgpType)
+meta(property="og:image" content=pageOgpImage)
+meta(property="og:url" content=rootUrl + pageUrl)
+meta(property="og:description" content=pageDescription)
+meta(property="og:site_name" content=siteName)
+meta(property="og:locale" content=pageLang)
+
+//- OGP Facebook insights
+meta(property="fb:admins" content="")
+meta(property="fb:app_id" content="")
+//- /OGP Facebook insights
+
+//- OGP Twitter Cards
+meta(name="twitter:card" content="summary")
+meta(name="twitter:site" content="@")
+//- /OGP Twitter Cards
+
+//- /OGP

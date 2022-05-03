@@ -1,0 +1,350 @@
+﻿
+// 960 1040 1120 1200 1280
+container-width = 900px;
+
+// breakpoint
+screen-size ?= {
+xs: 400,
+sm: 500,
+md: 768,
+lg: 1000,
+xl: 1200,
+}
+
+
+// レスポンシブのミックスイン
+mq-up(breakpoint: md) {
+  screen-size = screen-size.breakpoint px;
+  @media screen and (min-width: screen-size) {
+    {block}
+  }
+}
+
+mq-down(breakpoint: md) {
+  $screen-size: #{map-get($screen-size, $breakpoint)-1}px;
+  @media screen and (max-width: #{$screen-size}) {
+    {block}
+  }
+}
+
+res-up($class, $bp: $screen-size) {
+	#{$class} {
+		{block}
+	}
+  @each $suffix,
+  $value in $bp {
+    $value: #{$value}px;
+    @media screen and (min-width: #{$value}) {
+      .#{$class}-#{$suffix} {
+        {block}
+      }
+    }
+  }
+}
+
+res-down($class, $bp: $screen-size) {
+	#{$class} {
+		{block}
+	}
+  @each $suffix,
+  $value in $bp {
+    $value: #{$value}px;
+    @media screen and (max-width: #{$value}) {
+      .#{$class}-#{$suffix} {
+        {block}
+      }
+    }
+  }
+}
+
+
+// グリットデザイン
+column(maxcol: 12,col:1) {
+  width: 100% / maxcol * col;
+  width: calc(100% / #{maxcol} * #{col});
+}
+
+
+// グリットデザイン
+grid($gridName, $columns:12, $garter:0) {
+  .#{$gridName} {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-left:-#{$garter+'px'};
+    &__item {
+      float: left;
+      padding-left: #{$garter+'px'};
+      column($columns);
+    }
+  }
+  @for $i from 1 through 5{
+    .#{$gridName}--mb#{$i}{
+      & > .#{$gridName}__item{
+        margin-bottom: #{$i}rem;
+      }
+    }
+  }
+
+  @for $i from 1 to $columns+1 {
+    .#{$gridName}.cols-#{$i} {
+        & > .#{$gridName}__item {
+            column($columns,$i);
+        }
+    }
+    .col-#{$i} {
+        column($columns,$i);
+    }
+  }
+
+
+  @each $suffix,
+  $value in $screen-size {
+      $value: #{$value}px;
+      @media screen and (min-width: #{$value}) {
+
+          @for $i from 1 to $columns+1 {
+              .col-#{$suffix}-#{$i} {
+                  column($columns,$i);
+              }
+              .#{$gridName}.cols-#{$suffix}-#{$i} {
+                  & > .#{$gridName}__item {
+                      column($columns,$i);
+                  }
+              }
+          }
+
+      }
+  }
+
+}
+
+
+
+// グリッドを生成
+grid(grid, 12, 20);
+
+// グリッドcss
+gridcss($columns:4, $garter:20) {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin-left:-#{$garter+'px'};
+  &__item {
+    padding-left: #{$garter+'px'};
+      width: 100% / $columns;
+  }
+}
+
+gridcss-col( $columns, $garter, $point:md) {
+  $screen-size: #{map-get($screen-size, $point) -1}px;
+  @media screen and (min-width: #{$screen-size}) {
+    margin-left:-#{$garter+'px'};
+    &__item {
+      padding-left: #{$garter+'px'};
+      width: 100% / $columns;
+    }
+  }
+}
+
+// グリッドcssの指定方法
+// .testwap {
+//     gridcss(4,10);
+//     gridcss-col(4, 10, xs);
+// }
+
+
+res-up(none){
+	display: none;
+};
+
+res-up(none){
+	display: none;
+};
+
+
+res-up(br){
+	display: block;
+};
+
+
+
+@for $i from 1 through 9{
+	.mb#{i}{
+		margin-bottom: i+rem !important;
+	}
+}
+
+
+/*---------------------------------------------------*/
+/*                     Material                      */
+/*---------------------------------------------------*/
+
+
+html {
+  font-size: 10px;
+  word-wrap: break-word;
+  font-family: arial, sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+div,
+section,
+article,
+nav,
+aside {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  display: block;
+}
+
+ul,ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+svg{
+	height: 100%;
+	width: 100%;
+}
+
+mq-up(md){
+  a[href^="tel"]{
+    pointer-events: none;
+  }
+}
+
+span {
+  display: inline-block;
+}
+
+
+.video {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%;
+	iframe {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+
+/*---------------------------------------------------*/
+/*                     Component                     */
+/*---------------------------------------------------*/
+
+
+
+
+// ボタン
+btn($padding:10px) {
+  padding: #{$padding} 0;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1em;
+}
+
+btnGhost($color:#333) {
+  color: $color;
+  border: solid 1px $color;
+  transition: 1s;
+  &:hover {
+    background-color: $color;
+    color: #fff;
+  }
+}
+
+btnFlat($color:#333) {
+  color: #fff;
+  background-color: $color;
+  border: solid 1px $color;
+  transition: 1s;
+  &:hover {
+    background-color: #fff;
+    color: $color;
+  }
+}
+
+
+
+// スクロールバーの見た目を変更 webkit のみ
+scrollbar {
+  &::-webkit-scrollbar {
+    all: unset;
+    width: 5px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    all: unset;
+    border-radius: 8px;
+    background: transparent;
+    background: #fff;
+  }
+  &::-webkit-scrollbar-thumb {
+    all: unset;
+    border-radius: 8px;
+    background: transparent;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+
+
+
+
+// ゆらゆら横に揺れる
+// animation: horizontal 1s ease-in-out infinite alternate;
+@keyframes horizontal {
+  0% {
+    transform: translateX( -3px);
+  }
+  100% {
+    transform: translateX( 0px);
+  }
+}
+
+// ゆらゆら縦に揺れる
+// animation: vertical 1s ease-in-out infinite alternate;
+@keyframes vertical {
+  0% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY( 0px);
+  }
+}
