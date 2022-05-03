@@ -1,0 +1,9 @@
+mixin section
+  section.section(class="section__"+pageClass+" section")
+mixin breadcrum(dirname,breadcrumTitle)
+  ol.breadcrumbList
+    li.ListItem: a(href="index.pug") HOME
+    if dirname
+      li.ListItem: a(href=relativePath+dirname+'/index.pug') #{breadcrumTitle}
+    if pageTitle
+      li.ListItem #{pageTitle}

@@ -1,0 +1,17 @@
+extends ../common/_layout
+append variables
+	//- 変更する
+	- var relativePath= "../";
+	//- - var pageDescription= description;
+	//- オプション
+	//- - var pageOgpTitle= "";
+	//- - var pageOgpImage= ogpImage;
+	//- - var pageLang= "ja";
+	//- - var pageOgpType= "website";
+//- append head
+//- 	link(rel="stylesheet" href="page.css")
+block contents
+	.boxLayout
+		p #{productNane}
+//- append foot
+//- 	script(type="text/javascript" src="js/page.js")

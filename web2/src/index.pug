@@ -1,0 +1,30 @@
+extends common/_layout.pug
+append variables
+  //- 変更する
+  - var pageTitle= "";
+  - var pageDescription= description;
+  - var pageClass= "index";
+  - var relativePath= "./";
+  //- オプション
+  - var pageOgpTitle= "";
+  - var pageOgpImage= ogpImage;
+  - var pageLang= "ja";
+  - var pageOgpType= "website";
+  //- Not modified
+  - var breadcrumTitle= "";
+//- append head
+//-   link(rel="stylesheet" href="page.css")
+block contents
+  +section('news')
+    .boxLayout
+      p テキストがここに入ります。
+  .comingSoon
+    p 準備中
+    a(href=relativePath+"index.pug")
+    p 準備中
+    p 準備中
+    p 準備中
+    p 準備中
+
+//- append foot
+//-   script(type="text/javascript" src="js/page.js")

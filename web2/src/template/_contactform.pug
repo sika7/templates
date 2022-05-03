@@ -1,0 +1,84 @@
+form.contactForm(method="post" action="mail.php")
+  table
+    tbody
+      tr.formGroup
+        th
+          label.controlLabel(for="name") お名前
+          span.labelDanger ※必須
+        td
+          input#name.formControl(type="text" name="name")
+      tr.formGroup
+        th
+          label.controlLabel(for="email") メールアドレス
+          span.labelDanger ※必須
+        td
+          input#email.formControl(type="email" name="email")
+      tr.formGroup
+        th
+          label.controlLabel(for="companyName") 会社名
+          span.labelDanger ※必須
+        td
+          input#companyName.formControl(type="text" name="companyName")
+          p.helpBlock ヘルプ文書
+      tr.formGroup
+        th ラジオボタン
+        td
+          label.radio
+            input(type="radio" name="チェックボックス")
+            span remember
+      tr.formGroup
+        th チェツクボックス
+        td
+          label.checkbox
+            input(type="checkbox" name="チェックボックス")
+            span remember
+      tr.formGroup
+        th
+          label.controlLabel(for="language") 言語を選択
+        td
+          select(id="language" name="language")
+            option(value="en") 英語
+            option(value="ja") 日本語
+      tr.formGroup
+        th
+          .controlLabel ファイルを選択
+        td
+          label.fileWap(for="file")
+            span ファイルを選択
+            input(type="file" name="file")
+          .preview
+            script.
+              $(function(){
+                //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+                $('form').on('change', 'input[type="file"]', function(e) {
+                  var file = e.target.files[0],
+                    reader = new FileReader(),
+                      $preview = $(".preview");
+                      t = this;
+                  // 画像ファイル以外の場合は何もしない
+                  if(file.type.indexOf("image") < 0){
+                    return false;
+                  }
+                  // ファイル読み込みが完了した際のイベント登録
+                  reader.onload = (function(file) {
+                    return function(e) {
+                      //既存のプレビューを削除
+                      $preview.empty();
+                      // .prevewの領域の中にロードした画像を表示するimageタグを追加
+                      $preview.append($('<img>').attr({
+                        src: e.target.result,
+                          width: "150px",
+                            class: "preview",
+                              title: file.name
+                            }));
+                    };
+                  })(file);
+                  reader.readAsDataURL(file);
+                });
+              });
+      tr.formGroup
+        th
+          label.controlLabel(for="message") お問い合わせ内容
+        td
+          textarea#message.formTextarea(name="message")
+            button.btn.btnSubmit(type="submit") 送信
